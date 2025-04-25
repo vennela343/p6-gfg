@@ -26,29 +26,19 @@ class Geeks {
 class Solution {
     static int majorityElement(int arr[]) {
         // code here
-        int count = 0;
-        int candidate = -1;
-        for (int num : arr) {
-            if (count == 0) {
+        int candidate = -1, count = 0;
+        for(int  num : arr){
+            if(count == 0){
                 candidate = num;
-                count = 1;
-            } else if (num == candidate) {
-                count++;
-            } else {
-                count--;
             }
+            count += (num == candidate) ? 1 : -1;
         }
-
         count = 0;
-        for (int num : arr) {
-            if (num == candidate) {
+        for(int num : arr){
+            if(num == candidate){
                 count++;
             }
         }
-
-        return count > arr.length / 2 ? candidate : -1;
-    }
+        return (count > arr.length / 2)? candidate : -1;
+        }
 }
-
-        
-   
